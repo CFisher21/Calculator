@@ -6,12 +6,12 @@
     <title>Calculator</title>
     <link rel="icon" type="image/png" href="/calculator.png" />
     <link rel="stylesheet" type="text/css" href="/styles.css" />
-    <script src="/script.js"></script>
+    <script src="/script.js" defer></script>
   </head>
   <body>
     <div class="container">
       <div class="calculator">
-        <span class="display">0</span>
+        <span class="display" id="display">0</span>
         <div class="buttons">
           <div class="numbers">
             <a id="nine" class="button">9</a>
@@ -36,7 +36,8 @@
           <div class="equals">
             <a id="bracket-open" class="button">(</a>
             <a id="bracket-close" class="button">)</a>
-          <a id="equals" class="button">=</a>
+            <a class="button-clear" id="clear">C/CE</a>
+            <a id="equals" class="button-clear">=</a>
         </div>
         </div>
       </div>
