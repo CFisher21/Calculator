@@ -27,8 +27,7 @@
 .equals {
     width: 20%;
     height: 100%;
-    align-items: flex-end;
-    flex-grow: 1;
+    flex-direction: column;
 }
 
 .calculator {
