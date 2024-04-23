@@ -3,6 +3,7 @@ const buttons = document.getElementsByClassName("button");
 const display = document.getElementById("display");
 const clear = document.getElementById("clear");
 
+
 // Create an array from the HTML Collection
 const buttonsArray = Array.from(buttons);
 
@@ -26,22 +27,50 @@ buttonsArray.forEach(function(button) {
     })
 })
 
-function evaluate() {
-    var mathString = display.textContent;
-    const numbers = mathString.split(/\D+/).filter(Boolean).map(Number);
-    const mathSymbols = mathString.match(/[+\-÷x]/g);
-    
-    for(let i = 0; i < mathSymbols.length; i++) {
-        newString = numbers[i] + mathSymbols[i] + numbers[i+1] 
-        console.log(typeof(numbers[i]));
-        console.log(numbers[i])
-        console.log(typeof(mathSymbols[i]))
-        console.log(mathSymbols[i])
-        console.log(typeof(newString));
-        console.log(newString);
-    }
 
-    console.log(numbers, mathSymbols)
-}
+
+const equals = document.getElementById("equals");
+
+equals.addEventListener("click", function() {
+    result = evaluate();
+    display.textContent = result;
+});
+
+function evaluate() {
+
+    var mathString = display.textContent;
+    mathString = mathString.replace(/x/g, "*").replace(/÷/g, "/");
+    tokens = mathString.match(/\d+|\+|\-|\*|\//g);
+
+    let result = parseFloat(tokens[0]); // Initialize result with the first number
+    
+    for (let i = 1; i < tokens.length; i += 2) {
+        const operator = tokens[i];
+        const nextNumber = parseFloat(tokens[i + 1]);
+    
+        switch (operator) {
+          case "+":
+            result += nextNumber;
+            break;
+          case "-":
+            result -= nextNumber;
+            break;
+          case "*":
+            result *= nextNumber;
+            break;
+          case "/":
+            if (nextNumber !== 0) {
+              result /= nextNumber;
+            } else {
+              return "Cannot divide by zero";
+            }
+            break;
+          default:
+            return "Invalid operator";
+        }
+      }
+    
+     return result
+    }
 
 
