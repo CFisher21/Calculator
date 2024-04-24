@@ -52,6 +52,10 @@
     margin: 2px;
 }
 
+.button-clear {
+    height: 132px;
+}
+
 .buttons {
     height: 272px;
 }
