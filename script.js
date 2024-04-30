@@ -2,14 +2,13 @@
 const buttons = document.getElementsByClassName("button");
 const display = document.getElementById("display");
 const clear = document.getElementById("clear");
-var sum = false;
 
 // Create an array from the HTML Collection
 const buttonsArray = Array.from(buttons);
 
 //Clear the display
 clear.addEventListener("click", function () {
-  display.textContent = "";
+  location.reload();
 });
 
 // Add an event listener to each individual button
